@@ -44,6 +44,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate', '~> 2.7', '>= 2.7.1', require: false
   gem 'pry-rails', '~> 0.3.4'
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
