@@ -1,4 +1,4 @@
-table.table.table-hover
+table.table.table-hover.book-index
   tr
     th #
     th name
@@ -7,17 +7,26 @@ table.table.table-hover
     th delete
     th edit
     th rent
-  -@books.each do |book|
+  -@books.each_with_index do |book, index|
     tr
-      td =book.id
+      td =index
       td =link_to book.name, book
       td =book.author
       td =book.category
       td =link_to 'Delete', book,
-                             method: :delete,
-                             data: {confirm: 'Are you siure?'},
-                             :remote => true,
-                             class: 'delete_book'
-      td edit
+                           method: :delete,
+                           data: {confirm: 'Are you siure?'},
+                           remote: true,
+                           class: 'delete_book'
+      td =link_to 'Edit', edit_book_path(book),
+                          remote: true,
+                          class: 'edit_book'
       td rent
 =paginate @books
+
+.book-new
+  .h3
+    =link_to 'Add new book', new_book_path,
+                              remote: true
+
+#book-new

@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
   def index
     @books =  Book.all.page params[:page]
+    @book = Book.new
   end
 
   def show
@@ -11,11 +12,12 @@ class BooksController < ApplicationController
   end
 
   def update
+    @books = Book.all
+    @book.update_attributes(book_params)
   end
 
   def destroy
     @book.destroy
-    respond_to :js
   end
 
   def new
@@ -23,6 +25,7 @@ class BooksController < ApplicationController
   end
 
   def create
+    @book = Book.create(book_params)
   end
 
   private

@@ -1,0 +1,28 @@
+.book
+  table.table.table-hover
+    tr
+      td name
+      td =@book.name
+    tr
+      td author
+      td =@book.author
+    tr
+      td category
+      td =@book.category
+    tr
+      td delete
+      td =link_to 'Delete', @book,
+                             method: :delete,
+                             data: {confirm: 'Are you siure?'},
+                             class: 'delete_book'
+    tr
+      td edit
+      td =link_to 'Edit', edit_book_path,
+                          remote: true,
+                          class: 'edit_book'
+    tr
+      td rent
+      td
+  h2 Description
+  .book_description
+    =@book.description

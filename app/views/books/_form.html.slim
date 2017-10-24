@@ -1,0 +1,7 @@
+.book_form
+  =simple_form_for @book, remote: true do |b|
+    =b.input :name
+    =b.input :author
+    =b.input :category
+    =b.input :description
+    =b.button :submit
