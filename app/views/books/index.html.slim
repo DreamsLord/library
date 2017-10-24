@@ -1,0 +1,20 @@
+
+table
+  tr
+    th #
+    th name
+    th author
+    th category
+    th delete
+    th edit
+    th rent
+  -@books.each do |book|
+    tr
+      td =book.id
+      td =book.name
+      td =book.author
+      td =book.category
+      td delete
+      td edit
+      td rent
+=paginate @books
