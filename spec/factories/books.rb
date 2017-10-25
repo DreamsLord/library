@@ -13,9 +13,23 @@
 
 FactoryBot.define do
   factory :book do
-    name "MyString"
-    author "MyString"
-    category "MyString"
-    description "MyText"
+    name 'Name'
+    author 'author'
+    category 'category'
+    description 'description MyText with description min 25 characters'
+
+    factory :other_book do
+      name 'name_other'
+      author 'author_other'
+      category 'category_other'
+      description 'description MyText with description min 25 characters_other'
+    end
+
+    factory :invalid_book do
+      name nil
+      author nil
+      category 'MyString'
+      description 'MyText with description min 25 characters'
+    end
   end
 end
