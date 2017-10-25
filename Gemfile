@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rubocop-rspec', '~> 1.4', '>= 1.4.1'
   gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
   gem 'factory_bot_rails', '~> 1.0.0.alpha'

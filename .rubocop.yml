@@ -1,0 +1,32 @@
+require: rubocop-rspec
+
+Rails:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - app/assets/images/**/*
+    - app/assets/javascripts/**/*
+    - app/view/pages/*
+    - bin/*
+    - Rakefile
+    - config/**/*
+    - notepad/**/*
+    - spec/spec_helper.rb
+    - spec/rails_helper.rb
+    - test/**/*
+    - db/**/*
+    - deploy/*.rb
+    - deploy.rb
+    - app/helpers/bootstrap_flash_helper.rb
+    - app/helpers/bootstrap_deprecated_helper.rb
+    - app/services/stat/reporting/general.rb
+    - .git-hooks/**/*
+    - files/**/*
+
+RSpec/FilePath:
+  Enabled: false
+  CustomTransform:
+    RuboCop: rubocop
+    RSpec: rspec
