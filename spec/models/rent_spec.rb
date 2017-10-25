@@ -14,5 +14,20 @@
 require 'rails_helper'
 
 RSpec.describe Rent, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'database columns' do
+    it { is_expected.to have_db_column(:id) }
+    it { is_expected.to have_db_column(:return_date) }
+    it { is_expected.to have_db_column(:return?) }
+    it { is_expected.to have_db_column(:created_at) }
+    it { is_expected.to have_db_column(:updated_at) }
+    it { is_expected.to have_db_index(:user_id) }
+    it { is_expected.to have_db_index(:book_id) }
+  end
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:user_id) }
+    it { is_expected.to validate_presence_of(:book_id) }
+    it { is_expected.to validate_presence_of(:return_date) }
+    it { is_expected.to validate_presence_of(:return?) }
+
+  end
 end
