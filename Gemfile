@@ -7,6 +7,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'omniauth-google-oauth2', '~> 0.4.1'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'devise', '~> 4.2'
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
