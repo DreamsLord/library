@@ -25,8 +25,65 @@ AllCops:
     - .git-hooks/**/*
     - files/**/*
 
+Lint/UnneededDisable:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Exclude:
+    - app/views/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - app/views/**/*
+    - Guardfile
+    - lib/tasks/auto_annotate_models.rake
+
+Style/BracesAroundHashParameters:
+  Exclude:
+    - app/views/**/*
+
+OutputSafety:
+  Enabled: false
+
 RSpec/FilePath:
   Enabled: false
   CustomTransform:
     RuboCop: rubocop
     RSpec: rspec
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+  ConsistentQuotesInMultiline: true
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+
+RSpec/DescribedClass:
+  Enabled: false
+
+RSpec/ExampleWording:
+  Enabled: true
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+TrailingCommaInLiteral:
+  Enabled: false
+
+TrailingCommaInArguments:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+AsciiComments:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false

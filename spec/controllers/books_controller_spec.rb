@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe BooksController, type: :controller do
-  let (:book) { create :book }
+  let(:book) { create :book }
+
   describe 'GET #index' do
     before do
       get :index
@@ -47,7 +50,7 @@ RSpec.describe BooksController, type: :controller do
       it 'does not save the new book' do
         expect do
           post :create, params: { book: build(:invalid_book).attributes }
-        end.to_not change(Book, :count)
+        end.not_to change(Book, :count)
       end
     end
   end
@@ -66,6 +69,7 @@ RSpec.describe BooksController, type: :controller do
 
   describe 'PUT #update' do
     let(:other_book) { build(:other_book) }
+
     before do
       put :update, params: { id: book, book: other_book.attributes }
     end
@@ -83,26 +87,26 @@ RSpec.describe BooksController, type: :controller do
       it { is_expected.to redirect_to book }
     end
     context 'invalid attributes' do
+      let(:book_before_try_update) { book }
+
       before do
-        @book = book
         put :update, params: { id: book, book: build(:invalid_book).attributes }
       end
-      it "does not change @book attributes" do
+      it 'does not change @book attributes' do
         book.reload
-        expect(book.attributes).to eq(@book.attributes)
+        expect(book.attributes).to eq(book_before_try_update.attributes)
       end
     end
   end
 
-
-    describe 'DELETE #destroy' do
-      before do
-        @book = book
-      end
-      it 'deleted the book' do
-        expect do
-          book.delete
-        end.to change(Book, :count).by(-1)
-      end
+  describe 'DELETE #destroy' do
+    before do
+      @book = book
+    end
+    it 'deleted the book' do
+      expect do
+        book.delete
+      end.to change(Book, :count).by(-1)
     end
   end
+end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: books
@@ -14,23 +16,34 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  describe "database columns" do
-    it {should have_db_column(:id) }
-    it {should have_db_column(:name) }
-    it {should have_db_column(:author) }
-    it {should have_db_column(:category) }
-    it {should have_db_column(:description) }
-    it {should have_db_column(:created_at) }
-    it {should have_db_column(:updated_at) }
+  describe 'database columns' do
+    it { is_expected.to have_db_column(:id) }
+    it { is_expected.to have_db_column(:name) }
+    it { is_expected.to have_db_column(:author) }
+    it { is_expected.to have_db_column(:category) }
+    it { is_expected.to have_db_column(:description) }
+    it { is_expected.to have_db_column(:created_at) }
+    it { is_expected.to have_db_column(:updated_at) }
   end
 
-  describe "validations" do
-    it { should validate_presence_of(:name) }
-    it { should validate_presence_of(:author) }
-    it { should validate_length_of(:name).is_at_least(1).is_at_most(255) }
-    it { should validate_length_of(:author).is_at_least(1).is_at_most(255) }
-    it { should validate_length_of(:category).is_at_least(1).is_at_most(255) }
-    it { should validate_length_of(:description).is_at_least(25).is_at_most(6000) }
-
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
+    it { is_expected.to validate_presence_of(:author) }
+    it {
+      is_expected.to validate_length_of(:name).is_at_least(1)
+                                              .is_at_most(255)
+    }
+    it {
+      is_expected.to validate_length_of(:author).is_at_least(1)
+                                                .is_at_most(255)
+    }
+    it {
+      is_expected.to validate_length_of(:category).is_at_least(1)
+                                                  .is_at_most(255)
+    }
+    it {
+      is_expected.to validate_length_of(:description).is_at_least(25)
+                                                     .is_at_most(6000)
+    }
   end
 end

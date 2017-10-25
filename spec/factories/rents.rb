@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: rents
@@ -15,7 +17,7 @@ FactoryBot.define do
   factory :rent do
     user nil
     book nil
-    return_date "2017-10-25"
+    return_date '2017-10-25'
     return? false
   end
 end
