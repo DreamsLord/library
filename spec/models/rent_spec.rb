@@ -23,11 +23,11 @@ RSpec.describe Rent, type: :model do
     it { is_expected.to have_db_index(:user_id) }
     it { is_expected.to have_db_index(:book_id) }
   end
+
   describe 'validations' do
     it { is_expected.to validate_presence_of(:user_id) }
     it { is_expected.to validate_presence_of(:book_id) }
     it { is_expected.to validate_presence_of(:return_date) }
     it { is_expected.to validate_presence_of(:return?) }
-
   end
 end
