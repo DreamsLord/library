@@ -19,7 +19,6 @@ table.table.table-hover.book-index
                            remote: true,
                            class: 'delete_book'
       td =link_to 'Edit', edit_book_path(book),
-                          remote: true,
                           class: 'edit_book'
       td rent
 =paginate @books

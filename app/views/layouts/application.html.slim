@@ -7,13 +7,8 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    - if flash[:notice]
-      .alert.alert-success role="alert"
-        = flash[:notice]
-    - if flash[:error]
-      .alert.alert-danger role="alert"
-        = flash[:error]
     .jumbotron
       h1 Library
-    =render 'nav'
-    = yield
+    =render '/layouts/notice'
+    =render '/layouts/nav'
+    =yield

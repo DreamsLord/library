@@ -1,19 +1,21 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: %i[show edit update destroy]
   def index
-    @books =  Book.all.page params[:page]
-    @book = Book.new
+    @books = Book.all.page params[:page]
   end
 
-  def show
-  end
+  def show; end
 
-  def edit
-  end
+  def edit; end
 
   def update
-    @books = Book.all
-    @book.update_attributes(book_params)
+    if @book.update(book_params)
+      flash.now[:notice] = 'book modificated'
+      redirect_to @book
+    else
+      flash.now[:error] = 'Failed to modificated book in database'
+      render :new
+    end
   end
 
   def destroy
@@ -25,7 +27,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    @book = Book.create(book_params)
+    @book = Book.new(book_params)
+    if @book.save
+      redirect_to fallback_location: @book
+      flash.now[:notice] = 'book has been created'
+    else
+      flash.now[:error] = 'Failed to save book'
+      redirect_to new_book
+    end
   end
 
   private
@@ -37,6 +46,4 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:name, :author, :category, :description)
   end
-
-
 end
