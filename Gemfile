@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'rails-controller-testing', '~> 0.0.3'
   gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
   gem 'factory_bot_rails', '~> 1.0.0.alpha'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
