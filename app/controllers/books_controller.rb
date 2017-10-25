@@ -14,7 +14,7 @@ class BooksController < ApplicationController
       redirect_to @book
     else
       flash.now[:error] = 'Failed to modificated book in database'
-      render :new
+      render :edit
     end
   end
 
@@ -29,11 +29,11 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     if @book.save
-      redirect_to fallback_location: @book
+      redirect_to @book
       flash.now[:notice] = 'book has been created'
     else
       flash.now[:error] = 'Failed to save book'
-      redirect_to new_book
+      redirect_to new_book_url(@book)
     end
   end
 
