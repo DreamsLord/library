@@ -20,7 +20,10 @@ table.table.table-hover.book-index
                            class: 'delete_book'
       td =link_to 'Edit', edit_book_path(book),
                           class: 'edit_book'
-      td rent
+      td =link_to 'Rent', book.rent,
+                          method: :create,
+                          remote: :true,
+                          class: 'rent_book'
 =paginate @books
 
 .book-new

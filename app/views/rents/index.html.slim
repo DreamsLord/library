@@ -1,0 +1,14 @@
+table.table.table-hover.book-index
+  tr
+    th #
+    th name
+    th start
+    th return_date
+    th return
+  -@rents.each_with_index do |rent, index|
+    tr
+      td =index
+      td =link_to rent.book.name, rent.book
+      td =rent.created_at
+      td =rent.return_date
+      td
