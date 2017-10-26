@@ -1,9 +1,13 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.describe BooksController, type: :controller do
   let(:book) { create :book }
+  let(:user) { create :user1 }
+
+  context 'when user is logged in'
+  before do
+    sign_in user
+  end
 
   describe 'GET #index' do
     before do

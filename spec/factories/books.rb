@@ -33,5 +33,13 @@ FactoryBot.define do
       category 'MyString'
       description 'MyText with description min 25 characters'
     end
+
+    factory :deleted_book do
+      name nil
+      author nil
+      category 'MyString'
+      description 'MyText with description min 25 characters'
+      deleted_at '2017-10-26 18:18:57 +0200'
+    end
   end
 end

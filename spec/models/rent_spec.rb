@@ -6,7 +6,11 @@
 #  user_id     :integer          not null
 #  book_id     :integer          not null
 #  return_date :date             not null
-#  return?     :boolean          default(FALSE), not null
+#  return?     :boolean          default(FALSE)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
@@ -28,6 +32,5 @@ RSpec.describe Rent, type: :model do
     it { is_expected.to validate_presence_of(:user_id) }
     it { is_expected.to validate_presence_of(:book_id) }
     it { is_expected.to validate_presence_of(:return_date) }
-    it { is_expected.to validate_presence_of(:return?) }
   end
 end

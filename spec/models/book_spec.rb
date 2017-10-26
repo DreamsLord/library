@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: books
@@ -24,26 +25,15 @@ RSpec.describe Book, type: :model do
     it { is_expected.to have_db_column(:description) }
     it { is_expected.to have_db_column(:created_at) }
     it { is_expected.to have_db_column(:updated_at) }
+    it { is_expected.to have_db_column(:deleted_at) }
   end
 
   describe 'validations' do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_presence_of(:author) }
-    it {
-      is_expected.to validate_length_of(:name).is_at_least(1)
-                                              .is_at_most(255)
-    }
-    it {
-      is_expected.to validate_length_of(:author).is_at_least(1)
-                                                .is_at_most(255)
-    }
-    it {
-      is_expected.to validate_length_of(:category).is_at_least(1)
-                                                  .is_at_most(255)
-    }
-    it {
-      is_expected.to validate_length_of(:description).is_at_least(25)
-                                                     .is_at_most(6000)
-    }
+    it { is_expected.to validate_length_of(:name).is_at_least(1).is_at_most(255) }
+    it { is_expected.to validate_length_of(:author).is_at_least(1).is_at_most(255) }
+    it { is_expected.to validate_length_of(:category).is_at_least(1).is_at_most(255) }
+    it { is_expected.to validate_length_of(:description).is_at_least(25).is_at_most(6000) }
   end
 end

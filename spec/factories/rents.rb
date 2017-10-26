@@ -19,5 +19,19 @@ FactoryBot.define do
     book nil
     return_date '2017-10-25'
     return? false
+
+    factory :rent_book1_user1 do
+      user 1
+      book 1
+      return_date '2017-10-25'
+      return? false
+    end
+
+    factory :rent_book1_user1_returned do
+      user 1
+      book 1
+      return_date '2017-10-25'
+      return? true
+    end
   end
 end
