@@ -20,6 +20,10 @@ class BooksController < ApplicationController
 
   def destroy
     @book.delete
+    respond_to do |format|
+      format.js { render layout: false}
+      format.html {redirect_to books_path}
+    end
   end
 
   def new
