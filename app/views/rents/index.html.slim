@@ -1,3 +1,4 @@
+=paginate @rents
 table.table.table-hover.book-index
   tr
     th #
@@ -17,3 +18,4 @@ table.table.table-hover.book-index
         -else
           =link_to 'return', edit_rent_path(rent),
                               class: 'edit_book'
+=paginate @rents

@@ -1,3 +1,4 @@
+=paginate @books
 table.table.table-hover.book-index
   tr
     th #
@@ -27,4 +28,4 @@ table.table.table-hover.book-index
           =link_to 'Rent', rents_path(rent: {book_id: book.id}),
                                         method: :create,
                                         class: 'rent_book'
-  =paginate @books
+=paginate @books
