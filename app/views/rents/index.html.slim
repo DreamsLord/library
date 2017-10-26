@@ -12,3 +12,8 @@ table.table.table-hover.book-index
       td =rent.created_at
       td =rent.return_date
       td
+        -if rent.return?
+          |returned
+        -else
+          =link_to 'return', edit_rent_path(rent),
+                              class: 'edit_book'

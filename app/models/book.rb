@@ -18,6 +18,16 @@ class Book < ApplicationRecord
   validates :name, :author, :category, length: { in: 1..255 }
   validates :description, length: { in: 25..6000 }
 
-  has_one :rent
-  has_one :user, through: :rent
+  has_many :rents
+
+  def rented?
+    rents.present? && any_book_rented?
+  end
+
+  def any_book_rented?
+    rents.each do |rent|
+      return true unless rent.return?
+    end
+    false
+  end
 end

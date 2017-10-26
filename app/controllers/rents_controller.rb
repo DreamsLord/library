@@ -4,19 +4,17 @@ class RentsController < ApplicationController
     @rents = current_user.rents.all.page params[:page]
   end
 
-  def show; end
-
   def edit;
     update
   end
 
   def update
-    if @rent.update(return_params)
-      flash.now[:notice] = 'book returned'
-      redirect_to @rent
+    if @rent.update(return?: true)
+      flash[:notice] = 'book returned'
+      redirect_to rents_path
     else
-      flash.now[:error] = 'Failed to return book'
-      render :edit
+      flash[:error] = 'Failed to return book'
+      redirect_to rents_path
     end
   end
 
@@ -26,26 +24,26 @@ class RentsController < ApplicationController
 
   def create
     @rent = current_user.rents.new(rent_params)
+    set_return_date
     if @rent.save
-      redirect_to @rent
-      flash.now[:notice] = 'book has been rented'
+      flash[:notice] = 'book has been rented'
+      redirect_to @rent.book
     else
-      flash.now[:error] = 'Failed to rent the book'
-      redirect_to new_rent_url(@rent)
+      flash[:error] = 'Failed to rent the book'
+      redirect_to @rent.book
     end
   end
 
   private
 
+  def set_return_date
+    @rent.return_date = Time.now + 30.days
+  end
   def set_rent
     @rent = current_user.rents.find(params[:id])
   end
 
   def rent_params
-    params.require(:rent).permit(:user_id, :book_id)
-  end
-
-  def return_params
-    params.require(:rent).permit(:user_id, :book_id, :return?)
+    params.require(:rent).permit(:book_id)
   end
 end
