@@ -6,12 +6,12 @@ git_source(:github) do |repo_name|
 end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'omniauth-google-oauth2', '~> 0.4.1'
-gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'devise', '~> 4.2'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'jquery-rails', '~> 4.1', '>= 4.1.1'
 gem 'kaminari', '~> 1.1', '>= 1.1.1'
+gem 'omniauth-google-oauth2', '~> 0.4.1'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'

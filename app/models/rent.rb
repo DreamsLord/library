@@ -20,7 +20,6 @@ class Rent < ApplicationRecord
   validate :book_can_be_rent_only_by_one_person_at_this_same_time, on: :create
 
   def book_can_be_rent_only_by_one_person_at_this_same_time
-
     if Rent.where(book_id: book, return?: false).exists?
       errors.add(:book_id, "can't be twice rent in the same time")
     end

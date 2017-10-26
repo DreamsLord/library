@@ -26,12 +26,10 @@ FactoryBot.define do
     factory :user1 do
       email 'user@user.pl'
       password '123123'
-
     end
     factory :other_user do
       email 'other@user.pl'
       password '123123'
-
     end
     factory :other2_user do
       email 'other2@user.pl'

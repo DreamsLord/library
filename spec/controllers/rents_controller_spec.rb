@@ -37,8 +37,8 @@ RSpec.describe RentsController, type: :controller do
         it 'creates a new rent' do
           expect do
             post :create, params: { rent: { book_id: book.id,
-                                          return_date: '2017-10-25',
-                                          return?: true } }
+                                            return_date: '2017-10-25',
+                                            return?: true } }
           end.to change(Rent, :count).by(1)
         end
       end
@@ -46,6 +46,7 @@ RSpec.describe RentsController, type: :controller do
         let(:other_user) { create(:other_user) }
         let(:other_book) { create(:other_book) }
         let(:deleted_book) { create(:deleted_book) }
+
         it 'does not save the new rent without book' do
           expect do
             post :create, params: { rent: { book_id: nil,

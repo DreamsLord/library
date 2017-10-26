@@ -4,18 +4,17 @@ class RentsController < ApplicationController
     @rents = current_user.rents.includes(:book).page params[:page]
   end
 
-  def edit;
+  def edit
     update
   end
 
   def update
     if @rent.update(return?: true)
       flash[:notice] = 'book returned'
-      redirect_to rents_path
     else
       flash[:error] = 'Failed to return book'
-      redirect_to rents_path
     end
+    redirect_to rents_path
   end
 
   def new
@@ -37,8 +36,9 @@ class RentsController < ApplicationController
   private
 
   def set_return_date
-    @rent.return_date = Time.now + 30.days
+    @rent.return_date = Time.current + 30.days
   end
+
   def set_rent
     @rent = current_user.rents.find(params[:id])
   end

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: books
@@ -24,15 +25,15 @@ class Book < ApplicationRecord
   # We hide books which had been rented becouse
   # we want to have history rent
   def delete
-    can_be_destoryed? ? self.destroy : self.hide_book
+    can_be_destoryed? ? destroy : hide_book
   end
 
   def hide_book
-    update(deleted_at: Time.now)
+    update(deleted_at: Time.current)
   end
 
   def can_be_destoryed?
-    !rents.present?
+    rents.blank?
   end
 
   def rented?
