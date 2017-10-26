@@ -9,6 +9,8 @@ html
   body
     .jumbotron
       h1 Library
+
     =render '/layouts/notice'
     =render '/layouts/nav'
     =yield
+  = render "/layouts/login_links"
