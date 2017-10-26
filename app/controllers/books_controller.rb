@@ -37,7 +37,7 @@ class BooksController < ApplicationController
       flash.now[:notice] = 'book has been created'
     else
       flash.now[:error] = 'Failed to save book'
-      redirect_to new_book_url(@book)
+      render :new
     end
   end
 
