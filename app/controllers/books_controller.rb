@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[show edit update destroy]
   def index
-    @books = Book.all.page params[:page]
+    @books = Book.includes(:rents).page params[:page]
   end
 
   def show; end

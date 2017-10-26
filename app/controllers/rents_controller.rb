@@ -1,7 +1,7 @@
 class RentsController < ApplicationController
   before_action :set_rent, only: %i[show edit update destroy return_book]
   def index
-    @rents = current_user.rents.all.page params[:page]
+    @rents = current_user.rents.includes(:book).page params[:page]
   end
 
   def edit;
