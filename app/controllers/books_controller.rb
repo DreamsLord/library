@@ -19,7 +19,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book.destroy
+    @book.delete
   end
 
   def new
