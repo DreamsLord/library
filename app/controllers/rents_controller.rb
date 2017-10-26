@@ -30,7 +30,7 @@ class RentsController < ApplicationController
       redirect_to @rent.book
     else
       flash[:error] = 'Failed to rent the book'
-      redirect_to @rent.book
+      redirect_to books_path
     end
   end
 

@@ -35,8 +35,8 @@ FactoryBot.define do
     end
 
     factory :deleted_book do
-      name nil
-      author nil
+      name 'MyString'
+      author 'MyString'
       category 'MyString'
       description 'MyText with description min 25 characters'
       deleted_at '2017-10-26 18:18:57 +0200'
