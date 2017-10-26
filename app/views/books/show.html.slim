@@ -22,6 +22,13 @@
     tr
       td rent
       td
+        -if @book.rented?
+          | rented
+        -else
+          =link_to 'Rent', rents_path(rent: {book_id: @book.id}),
+                                        method: :create,
+                                        class: 'rent_book'
+
   h2 Description
   .book_description
     =@book.description
