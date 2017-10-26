@@ -28,10 +28,3 @@ table.table.table-hover.book-index
                                         method: :create,
                                         class: 'rent_book'
   =paginate @books
-
-.book-new
-  .h3
-    =link_to 'Add new book', new_book_path,
-                              remote: true
-
-#book-new
